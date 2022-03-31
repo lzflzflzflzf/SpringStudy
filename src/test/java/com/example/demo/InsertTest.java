@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.POJO.People;
 import com.example.demo.mappers.PeopleMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -19,8 +20,8 @@ public class InsertTest {
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         PeopleMapper mapper = sqlSession.getMapper(PeopleMapper.class);
-        mapper.updateperson();
+        People ap = mapper.getByName("lzf");
         sqlSession.commit();
-        System.out.println("finish");
+        System.out.println("finish"+"  "+ap);
     }
 }

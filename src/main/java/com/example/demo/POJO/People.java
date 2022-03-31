@@ -61,7 +61,6 @@ public class People implements Serializable {
 
     @Override
     public String toString() {
-//        return super.toString();
         return this.name+" "+this.studentID+" "+this.gender +" "+this.age;
     }
 }

@@ -15,4 +15,7 @@ public interface PeopleMapper {
     People searchperson();
 
     List<People> searchAll();
+
+    People getByName(String name);
+
 }

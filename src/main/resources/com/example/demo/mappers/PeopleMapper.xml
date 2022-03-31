@@ -39,4 +39,12 @@
         select * from People
     </select>
 
+    <!--
+        People getByName(String name);
+    -->
+    <select id="getByName" resultType="com.example.demo.POJO.People">
+        select * from People where name = #{name}
+    </select>
+
+
 </mapper>
