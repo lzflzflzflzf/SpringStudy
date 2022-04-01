@@ -15,6 +15,7 @@ public class PeopleController {
     @Autowired
     PeopleService peopleService;
 
+
     @RequestMapping("/findall")
     @ResponseBody
     public List<People> findAllPeople()
