@@ -1,6 +1,9 @@
 package com.example.demo.POJO;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.io.Serializable;
+
 
 public class People implements Serializable {
 
