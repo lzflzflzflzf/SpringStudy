@@ -1,6 +1,4 @@
-package com.example.demo.POJO;
-
-import org.springframework.web.bind.annotation.ResponseBody;
+package com.example.demo.pojo;
 
 import java.io.Serializable;
 

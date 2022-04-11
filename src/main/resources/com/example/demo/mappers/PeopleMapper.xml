@@ -9,18 +9,6 @@
     </insert>
 
 
-<!-- void insertperson();
-
-    void deleteperson();
-
-    void updateperson();
-
-    void searchperson();
-
-    void searchAll();
-
-    -->
-
 
     <delete id="deleteperson">
         delete from People where id = 2
@@ -31,18 +19,18 @@
         update People set name = 'newname' where id = 3
     </update>
 
-    <select id="searchperson" resultType="com.example.demo.POJO.People">
+    <select id="searchperson" resultType="com.example.demo.pojo.People">
         select * from People where id = 1
     </select>
 
-    <select id="searchAll" resultType="com.example.demo.POJO.People">
+    <select id="searchAll" resultType="com.example.demo.pojo.People">
         select * from People
     </select>
 
     <!--
         People getByName(String name);
     -->
-    <select id="getByName" resultType="com.example.demo.POJO.People">
+    <select id="getByName" resultType="com.example.demo.pojo.People">
         select * from People where name = #{name}
     </select>
 

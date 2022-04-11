@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bookdemo.mappers.BookMapper">
+
+    <!--    //添加-->
+    <!--    int insert(@Param("book") Book b);-->
+    <insert id="insert" parameterType="com.example.bookdemo.pojo.Book">
+        insert into book(bookID, bookName, price) value(null, #{book.bookName}, #{book.price})
+    </insert>
+    <!--    //批量插入-->
+<!--        int insertMore(@Param("books") List<Book> books);-->
+    <insert id="insertMore" parameterType="java.util.List" >
+        insert into book(bookID, bookName, price)
+        values
+        <foreach collection="books" item="item" index="index" separator=",">
+            (null, #{item.bookName}, #{item.price})
+        </foreach>
+    </insert>
+
+    <!--    //删除-->
+    <!--    int delete(@Param("book") String b);-->
+    <delete id="delete">
+        delete from book where bookName = #{book}
+    </delete>
+    <!--    //批量删除-->
+    <!--    int deleteMore(@Param("books") List<String> books);-->
+    <delete id="deleteMore" parameterType="java.util.List">
+        delete from book where bookname in (
+        <foreach collection="books" item="name" separator=",">
+            #{name}
+        </foreach>
+            )
+
+    </delete>
+
+    <!--    //修改-->
+    <!--    int update(@Param("bookname") String name, @Param("newprice") float price);-->
+    <update id="update">
+        update book set price = #{newprice} where bookName = #{bookname}
+    </update>
+
+
+    <!--    //查询全部-->
+    <!--    List<Book> queryAll();-->
+    <select id="queryAll" resultType="com.example.bookdemo.pojo.Book">
+        select * from book
+    </select>
+
+
+    <!--    //按名查询-->
+    <!--    Book queryBook(@Param("name") String name);-->
+    <select id="queryBook" resultType="com.example.bookdemo.pojo.Book">
+        select * from book where bookName = #{name}
+    </select>
+
+</mapper>
