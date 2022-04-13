@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/book")
 public class BookController {
     @Autowired
     BookServiceImpl bookService;
@@ -61,7 +62,7 @@ public class BookController {
         System.out.println(res);
     }
 
-    @RequestMapping(value = "deletemore", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deletemore", method = RequestMethod.DELETE)
     public void deleteMore()
     {
         List<String> names = new ArrayList<>();
@@ -72,25 +73,26 @@ public class BookController {
         System.out.println(res);
     }
 
-    @RequestMapping(value = "updateprice" , method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateprice" , method = RequestMethod.PUT)
     public void updatePrice()
     {
         int res = bookService.UpdatePrice("java" , ((float) 99.99));
         System.out.println(res);
     }
 
-    @RequestMapping(value = "queryall" , method = RequestMethod.GET)
+    @RequestMapping(value = "/queryall" , method = RequestMethod.GET)
     public void queryAll()
     {
         List<Book> books = bookService.queryAllBook();
         System.out.println(books);
     }
 
-    @RequestMapping(value = "query" , method = RequestMethod.GET)
-    public void getByName()
+    @RequestMapping(value = "/query" , method = RequestMethod.GET)
+    public Book getByName()
     {
         Book book = bookService.queryByName("python");
         System.out.println(book);
+        return book;
     }
 
 }

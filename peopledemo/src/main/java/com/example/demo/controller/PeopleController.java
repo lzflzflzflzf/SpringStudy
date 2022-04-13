@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
+
+import com.example.bookdemo.pojo.Book;
+import com.example.bookdemo.service.BookServiceImpl;
 import com.example.demo.pojo.People;
 import com.example.demo.service.PeopleServiceIImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +17,34 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/people")
 public class PeopleController {
     @Autowired
     PeopleServiceIImpl peopleService;
+
+    @Autowired
+    BookServiceImpl bookService;
+
+    @RequestMapping("/usebook/getbook")
+    public String getAllBook()
+    {
+        List<Book> books = bookService.queryAllBook();
+        StringBuilder sb = new StringBuilder();
+        books.forEach(b->{
+            sb.append(b.toString());
+            sb.append("\n");
+            System.out.println(b.toString());
+        });
+        return sb.toString();
+    }
+
+
+    @RequestMapping("/hellomodule")
+    public String he()
+    {
+        return "hello multi-module";
+    }
+
 
 
     @NacosValue(value = "${name}", autoRefreshed = true)
