@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mappers.PeopleMapper">
+
+    <insert id="insertperson">
+        insert into People values(null,'pll','3123412','f',27)
+    </insert>
+
+
+
+    <delete id="deleteperson">
+        delete from People where id = 2
+    </delete>
+
+
+    <update id="updateperson">
+        update People set name = 'newname' where id = 3
+    </update>
+
+    <select id="searchperson" resultType="com.example.demo.pojo.People">
+        select * from People where id = 1
+    </select>
+
+    <select id="searchAll" resultType="com.example.demo.pojo.People">
+        select * from People
+    </select>
+
+    <!--
+        People getByName(String name);
+    -->
+    <select id="getByName" resultType="com.example.demo.pojo.People">
+        select * from People where name = #{name}
+    </select>
+
+
+</mapper>
