@@ -1,11 +1,11 @@
 package com.example.bookdemo.controller;
 
+
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.example.bookdemo.pojo.Book;
 import com.example.bookdemo.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,29 @@ public class BookController {
     BookServiceImpl bookService;
 
 
+
+
+
+    @NacosValue(value = "${bookname}", autoRefreshed = true)
+    private String name;
+
+    @NacosValue(value = "${bookid}", autoRefreshed = true)
+    private String id;
+
+    @RequestMapping("/getConfig")
+    public String getConfig()
+    {
+        return name+"  "+id;
+    }
+
+
+
+
+
+
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public Book insertbook()
     {
-
         return bookService.addBook(new Book("python199", ((float) 39.5)));
     }
 
