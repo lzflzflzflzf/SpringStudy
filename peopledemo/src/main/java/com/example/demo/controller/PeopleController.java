@@ -23,7 +23,7 @@ public class PeopleController {
     @Autowired
     BookServiceImpl bookService;
 
-    @RequestMapping("/usebook/getbook")
+    @RequestMapping(value = "/usebook/getbook", method = RequestMethod.GET)
     public String getAllBook()
     {
         List<Book> books = bookService.queryAllBook();
@@ -37,7 +37,7 @@ public class PeopleController {
     }
 
 
-    @RequestMapping("/hellomodule")
+    @RequestMapping(value = "/hellomodule", method = RequestMethod.GET)
     public String he()
     {
         return "hello multi-module";
