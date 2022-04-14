@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/book")
 public class BookController {
     @Autowired
     BookServiceImpl bookService;
@@ -87,10 +88,11 @@ public class BookController {
     }
 
     @RequestMapping(value = "query" , method = RequestMethod.GET)
-    public void getByName()
+    public Book getByName()
     {
         Book book = bookService.queryByName("python");
         System.out.println(book);
+        return book;
     }
 
 }
