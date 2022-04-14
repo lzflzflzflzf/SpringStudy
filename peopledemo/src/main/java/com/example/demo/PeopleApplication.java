@@ -15,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({"com.example.demo","com.example.bookdemo"})
 public class PeopleApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(PeopleApplication.class, args);
     }
