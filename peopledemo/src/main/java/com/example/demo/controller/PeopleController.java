@@ -2,8 +2,8 @@ package com.example.demo.controller;
 
 
 import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.example.bookdemo.pojo.Book;
-import com.example.bookdemo.service.BookServiceImpl;
+//import com.example.bookdemo.pojo.Book;
+//import com.example.bookdemo.service.BookServiceImpl;
 import com.example.demo.pojo.People;
 import com.example.demo.service.PeopleServiceIImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +20,6 @@ public class PeopleController {
     @Autowired
     PeopleServiceIImpl peopleService;
 
-    @Autowired
-    BookServiceImpl bookService;
-
-    @RequestMapping(value = "/usebook/getbook", method = RequestMethod.GET)
-    public String getAllBook()
-    {
-        List<Book> books = bookService.queryAllBook();
-        StringBuilder sb = new StringBuilder();
-        books.forEach(b->{
-            sb.append(b.toString());
-            sb.append("\n");
-            System.out.println(b.toString());
-        });
-        return sb.toString();
-    }
-
 
     @RequestMapping(value = "/hellomodule", method = RequestMethod.GET)
     public String he()
@@ -45,17 +29,17 @@ public class PeopleController {
 
 
 
-    @NacosValue(value = "${name}", autoRefreshed = true)
-    private String name;
+//    @NacosValue(value = "${name}", autoRefreshed = true)
+//    private String name;
+//
+//    @NacosValue(value = "${password}", autoRefreshed = true)
+//    private String password;
 
-    @NacosValue(value = "${password}", autoRefreshed = true)
-    private String password;
-
-    @RequestMapping("/getConfig")
-    public String getConfig()
-    {
-        return name+"  "+password;
-    }
+//    @RequestMapping("/getConfig")
+//    public String getConfig()
+//    {
+//        return name+"  "+password;
+//    }
 
     @RequestMapping(value = "/findall", method = RequestMethod.GET)
     public List<People> findAllPeople()

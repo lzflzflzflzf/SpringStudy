@@ -11,14 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
 public class BookController {
     @Autowired
     BookServiceImpl bookService;
-
-
-
-
 
     @NacosValue(value = "${bookname}", autoRefreshed = true)
     private String name;
@@ -33,6 +28,11 @@ public class BookController {
     }
 
 
+    @GetMapping(value = "bookhelloworld")
+    public String hi()
+    {
+        return "hello book world";
+    }
 
 
 
